@@ -1,0 +1,48 @@
+.cardWrapper {
+  font-family: Nunito;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  width: 250px;
+  gap: 10px;
+
+  img {
+    width: 250px;
+    height: 230px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .priceContainer {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    align-items: center;
+
+    & > p {
+      display: block;
+      color: var(--secondary-red);
+      font-weight: 800;
+    }
+
+    & > span {
+      width: max-content;
+      background-color: var(--secondary-red);
+      color: #ffffff;
+      padding: 5px 8px;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+  }
+
+  .productName {
+    color: #2e80a3;
+    font-size: 14px;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
