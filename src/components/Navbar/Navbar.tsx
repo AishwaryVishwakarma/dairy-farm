@@ -15,19 +15,49 @@ const Navbar: React.FC = () => {
       </div>
       <ul className={styles.navItems}>
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/service">Service</NavLink>
+          <NavLink
+            to="/service"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Service
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/products">Products</NavLink>
+          <NavLink
+            to="/products"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Products
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/contact-us">Contact Us</NavLink>
+          <NavLink
+            to="/contact-us"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Contact Us
+          </NavLink>
         </li>
         <li>
-          <NavLink to="/signIn">Sign In</NavLink>
+          <NavLink
+            to="/signIn"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Sign In
+          </NavLink>
         </li>
       </ul>
     </nav>
