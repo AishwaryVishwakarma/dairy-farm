@@ -5,7 +5,7 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 const BG_IMAGES = [
   'https://images.unsplash.com/photo-1440428099904-c6d459a7e7b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
   'https://images.pexels.com/photos/2343174/pexels-photo-2343174.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-  'https://images.pexels.com/photos/1974875/pexels-photo-1974875.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+  'https://images.pexels.com/photos/2064359/pexels-photo-2064359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 ]
 
 const HomeHero: React.FC = () => {

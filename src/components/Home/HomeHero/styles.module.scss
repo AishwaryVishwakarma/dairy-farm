@@ -17,7 +17,8 @@
     transform: translateY(-50%);
     background: transparent;
     display: flex;
-    background: rgba($color: #eeeeee, $alpha: 0.2);
+    background: var(--primary-blue);
+    color: #ffffff !important;
     align-items: center;
     justify-content: center;
     color: var(--primary-blue);
@@ -25,10 +26,10 @@
     border-radius: 50%;
     padding: 10px;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
     &:hover {
-      background: rgba($color: #eeeeee, $alpha: 0.5);
+      box-shadow: 0 0 5px 0 #000000;
     }
   }
 
