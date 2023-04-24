@@ -25,7 +25,7 @@ const HomeHero: React.FC = () => {
     return () => clearInterval(timeoutFunction)
   }, [changeIndexHandler])
 
-  function prevImageHandler() {
+  function prevImageHandler(): void {
     if (currentIndex === 0) {
       setCurrentIndex(BG_IMAGES.length - 1)
     } else {
@@ -33,7 +33,7 @@ const HomeHero: React.FC = () => {
     }
   }
 
-  function nextImageHandler() {
+  function nextImageHandler(): void {
     if (currentIndex === BG_IMAGES.length - 1) {
       setCurrentIndex(0)
     } else {
