@@ -1,4 +1,8 @@
 .navbar {
+  color: #ffffff;
+  background: rgba(2, 21, 45, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur1(15px);
   display: flex;
   align-items: center;
   padding: 10px 20px 10px 50px;
@@ -193,16 +197,4 @@
       }
     }
   }
-}
-
-// .light {
-//   color: var(--almost-black);
-//   background-color: #ffffff;
-// }
-
-.dark {
-  color: #ffffff;
-  background: rgba(2, 21, 45, 0.85);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur1(15px);
 }
