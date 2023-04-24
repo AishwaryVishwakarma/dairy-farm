@@ -4,7 +4,7 @@ export interface Utility {
 }
 
 //Newly Added Product
-interface NewlyAddedProductData {
+export interface NewlyAddedProductData {
   id: string
   img: string
   price: number
