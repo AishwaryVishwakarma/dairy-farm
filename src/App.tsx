@@ -1,34 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
+import { type Utility } from './model'
 import './App.css'
+import useMediaQuery from './hooks/useMediaQuery'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import ErrorPage from './pages/error'
+import RootLayout from './components/RootLayout/RootLayout'
+import HomePage from './pages/home'
 
-function App() {
-  const [count, setCount] = useState(0)
+export const UtilityContext = React.createContext<Utility>({
+  isMobile: false
+})
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <HomePage /> },
+      { path: '*', element: <ErrorPage /> }
+    ]
+  }
+])
+
+const App: React.FC = () => {
+  const isMobile = useMediaQuery('(max-width: 800px)')
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <UtilityContext.Provider value={{ isMobile }}>
+      <RouterProvider router={router} />
+    </UtilityContext.Provider>
   )
 }
 

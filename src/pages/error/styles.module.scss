@@ -1,0 +1,35 @@
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+  gap: 30px;
+
+  .textContainer {
+    font-family: Nunito;
+    color: var(--almost-black);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .textHeading {
+      font-weight: 800;
+      font-size: 40px;
+      letter-spacing: 1px;
+    }
+
+    .subtext {
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+
+      & > a {
+        font-weight: bold;
+        color: var(--primary-blue);
+        cursor: pointer;
+      }
+    }
+  }
+}
