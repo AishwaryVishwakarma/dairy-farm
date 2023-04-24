@@ -1,37 +1,65 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { UtilityContext } from '../../App'
+import { NavLink } from 'react-router-dom'
 
 const NAV_TABS = ['Home', 'Service', 'Products', 'Contact Us', 'Sign In']
 
 const Navbar: React.FC = () => {
-  const { theme, setTheme, isMobile } = React.useContext(UtilityContext) ?? {}
-
-  function setThemeHandler() {
-    theme === 'light' ? setTheme?.('dark') : setTheme?.('light')
-  }
+  const { isMobile } = React.useContext(UtilityContext) ?? {}
 
   return (
-    <nav
-      className={`${styles.navbar} ${
-        theme === 'light' ? styles.light : styles.dark
-      }`}
-    >
-      <div className={styles.navHeading}>React</div>
+    <nav className={styles.navbar}>
+      <div className={styles.navHeading}>
+        <NavLink to="/">React</NavLink>
+      </div>
       <ul className={styles.navItems}>
-        {NAV_TABS.map((tab, idx) => (
-          <li key={idx}>{tab}</li>
-        ))}
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/service"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Service
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/products"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Products
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/contact-us"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Contact Us
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/signIn"
+            className={({ isActive }) => (isActive ? styles.active : '')}
+            end
+          >
+            Sign In
+          </NavLink>
+        </li>
       </ul>
-      {/* <label className={styles.toggleLabel}>
-        <input
-          type="checkbox"
-          onChange={setThemeHandler}
-          checked={theme === 'dark'}
-        />
-        <span className={styles.toggleButton} />
-        <span className={styles.toggleIcons} />
-      </label> */}
     </nav>
   )
 }
