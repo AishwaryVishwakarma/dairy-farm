@@ -6,6 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './pages/error'
 import RootLayout from './components/RootLayout/RootLayout'
 import HomePage from './pages/home'
+import ProductPage from './pages/product'
 
 export const UtilityContext = React.createContext<Utility>({
   isMobile: false
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <HomePage /> },
+      {path: ":id", element: <ProductPage />},
       { path: '*', element: <ErrorPage /> }
     ]
   }

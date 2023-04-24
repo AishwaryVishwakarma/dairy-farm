@@ -13,6 +13,11 @@
   z-index: 1000;
   flex-wrap: wrap;
 
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   .navHeading {
     font-family: 'Lato';
     font-size: 30px;
