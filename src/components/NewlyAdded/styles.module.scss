@@ -64,8 +64,9 @@
         align-items: center;
         justify-content: center;
         position: absolute;
-        height: 100px;
+        height: 50px;
         width: 50px;
+        // border-radius: 100%;
         cursor: pointer;
         border: none;
         top: 50%;
@@ -75,14 +76,15 @@
       }
   
       .prevButton {
-        left: 20px;
-        border-radius: 0 5px 5px 0;
+
+        left: 5px;
+        border-radius: 100%;
         box-shadow: 1.5px 0 3px 1px #c4c4c4;
       }
   
       .nextButton {
-        right: 20px;
-        border-radius: 5px 0 0 5px;
+        right: 5px;
+        border-radius: 100%;
         box-shadow: -1.5px 0 3px 1px #c4c4c4;
       }
     }
