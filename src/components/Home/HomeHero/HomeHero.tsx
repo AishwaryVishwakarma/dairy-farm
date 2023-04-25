@@ -2,6 +2,20 @@ import React from 'react'
 import styles from './styles.module.scss'
 
 const HomeHero: React.FC = () => {
+
+
+  function scrollToMain() {
+    const my_element = document.getElementById("home-main")
+
+    console.log(my_element)
+
+    my_element?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    })
+  }
+
   return (
     <div className="full-bleed layouted">
       <div className={styles.heroWrapper}>
@@ -14,7 +28,9 @@ const HomeHero: React.FC = () => {
             architecto commodi magni voluptate sed minus assumenda eligendi
             perferendis deserunt!
           </p>
-          <div className={styles.cta}>Shop Now</div>
+          <div onClick={scrollToMain} className={styles.cta}>
+            Shop Now
+          </div>
         </div>
         <div className={styles.imageContainer}>
           <img

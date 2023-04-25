@@ -22,7 +22,7 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
   }, [TSData])
 
   return (
-    <div className={`${styles.NAWrapper} full-bleed layouted`}>
+    <div id="home-main" className={`${styles.NAWrapper} full-bleed layouted`}>
       <div className={styles.NAContent}>
         <div className={styles.NAMain}>
           <p className={styles.heading}>Today's Special</p>
