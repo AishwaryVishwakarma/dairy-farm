@@ -2,7 +2,6 @@ import React from 'react'
 import styles from './styles.module.scss'
 import { Link } from 'react-router-dom'
 import { nanoid } from 'nanoid'
-import { NewlyAddedProductData as NewlyAddedProductData } from '../../model'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import TodaySpecialCard from './TSCard/TodaySpecialCard'
 import Loading from '../../commons/Loading/Loading'
@@ -10,7 +9,7 @@ import Loading from '../../commons/Loading/Loading'
 const TodaySpecial: React.FC<any> = ({ TSData }) => {
   const cardsSectionRef = React.useRef<HTMLDivElement | null>(null)
 
-  const [todaySpecial, setTodaySpecial] = React.useState([])
+  const [todaySpecial, setTodaySpecial] = React.useState<any[]>([])
 
   const scroll = (scrollOffset: number) => {
     if (cardsSectionRef.current) {

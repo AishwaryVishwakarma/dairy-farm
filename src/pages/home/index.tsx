@@ -5,7 +5,7 @@ import axios from 'axios'
 import TodaysSpecial from '../../components/Home/TodaySpecial/TodaySpecial'
 
 const HomePage: React.FC = () => {
-  const [homeData, setHomeData] = React.useState([])
+  const [homeData, setHomeData] = React.useState<any>([])
 
   React.useEffect(() => {
     axios
