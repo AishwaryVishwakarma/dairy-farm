@@ -9,8 +9,7 @@
 }
 
 :root {
-  --primary-blue: #397ce7;
-  --secondary-blue: #042752;
+  --primary-blue: #4c52ea;
   --almost-black: #02152d;
   --primary-red: #ef5353;
   --secondary-red: #b90b33;
@@ -18,4 +17,9 @@
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+.page-content {
+  width: 80%;
+  margin: 0 auto;
 }
