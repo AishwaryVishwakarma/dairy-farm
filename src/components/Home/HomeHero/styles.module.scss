@@ -1,80 +1,69 @@
-.heroCarousel {
-  position: relative;
-  height: 700px;
-  overflow: hidden;
+.heroWrapper {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 50px 0;
 
-  & > img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
-
-  & > button {
-    border: none;
-    outline: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: transparent;
+  .infoContainer {
+    max-width: 600px;
     display: flex;
-    background: var(--primary-blue);
-    color: #ffffff !important;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-blue);
-    font-size: 30px;
-    border-radius: 50%;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 30px;
 
-    &:hover {
-      box-shadow: 0 0 5px 0 #000000;
+    .heading {
+      color: var(--primary-blue);
+      font-family: Rubik;
+      font-size: 50px;
+      font-weight: 700;
+      letter-spacing: 1px;
+
+      & > span {
+        font-family: Dancing Script;
+        color: var(--primary-red);
+      }
+    }
+
+    .description {
+      color: #394157;
+      font-family: Nunito;
+      font-size: 21px;
+      font-weight: 300;
+      letter-spacing: -0.005em;
+      line-height: 29px;
+      text-align: left;
+    }
+
+    .cta {
+      color: white;
+      font-family: Nunito;
+      font-size: 27px;
+      font-weight: 600;
+      background-color: var(--primary-blue);
+      width: max-content;
+      padding: 10px 60px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      text-align: center;
+
+      &:hover {
+        transform: scale(1.03);
+      }
     }
   }
 
-  .leftCaret {
-    left: 20px;
-  }
+  .imageContainer {
+    height: 450px;
+    width: 550px;
+    border-radius: 15px;
+    overflow: hidden;
+    flex-shrink: 0;
 
-  .rightCaret {
-    right: 20px;
-  }
-
-  .heroContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: max-content;
-    width: max-content;
-
-    .heroHeadingContainer {
-      .heroHeading {
-        color: var(--primary-blue);
-        font-family: Nunito;
-        font-size: 50px;
-        font-weight: 600;
-        letter-spacing: 1px;
-
-        & > span {
-          font-family: Dancing Script;
-          color: var(--primary-red);
-        }
-      }
-
-      .heroCta {
-        color: white;
-        font-family: Nunito;
-        font-size: 27px;
-        font-weight: 600;
-        background-color: var(--primary-blue);
-        width: max-content;
-        padding: 10px 30px;
-        border-radius: 5px;
-        margin: 20px auto 0;
-        cursor: pointer;
-      }
+    & > img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
   }
 }
