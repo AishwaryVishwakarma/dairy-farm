@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import { NewlyAddedProductData as NewlyAddedProductData } from '../../model'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
-import NewlyAddedCard from './NACard/NewlyAddedCard'
-import axios from 'axios'
+import TodaySpecialCard from './TSCard/TodaySpecialCard'
+import Loading from '../../commons/Loading/Loading'
 
-const NewlyAdded: React.FC = () => {
+const TodaySpecial: React.FC<any> = ({ TSData }) => {
   const cardsSectionRef = React.useRef<HTMLDivElement | null>(null)
 
-  const [todaysSpecial, setTodaysSpecial] = React.useState([])
+  const [todaySpecial, setTodaySpecial] = React.useState([])
 
   const scroll = (scrollOffset: number) => {
     if (cardsSectionRef.current) {
@@ -19,26 +19,26 @@ const NewlyAdded: React.FC = () => {
   }
 
   React.useEffect(() => {
-    axios
-      .post('http://mywinkel.in/admin/api/home')
-      .then((res) => setTodaysSpecial(res.data.todayspecial))
-      .catch((err) => console.log(err))
-  }, [])
+    setTodaySpecial(TSData)
+  }, [TSData])
 
-  console.log(todaysSpecial)
+  console.log(TSData)
 
   return (
     <div className={styles.NAWrapper}>
       <div className={styles.NAMain}>
         <p className={styles.heading}>Today's Special</p>
         <div ref={cardsSectionRef} className={styles.NACardsSection}>
-          {todaysSpecial.length > 0 &&
-            todaysSpecial.map(
+          {todaySpecial ? (
+            todaySpecial.map(
               (data) =>
                 data?.available_qty > 0 && (
-                  <NewlyAddedCard key={nanoid()} data={data} />
+                  <TodaySpecialCard key={nanoid()} data={data} />
                 )
-            )}
+            )
+          ) : (
+            <Loading loadingType="bars" height={80} width={80} />
+          )}
           <button
             type="button"
             className={styles.prevButton}
@@ -59,4 +59,4 @@ const NewlyAdded: React.FC = () => {
   )
 }
 
-export default NewlyAdded
+export default TodaySpecial

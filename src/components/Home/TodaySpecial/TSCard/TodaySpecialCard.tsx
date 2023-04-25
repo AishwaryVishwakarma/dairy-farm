@@ -7,14 +7,11 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
 //   data: NewlyAddedProductData
 // }
 
-const NewlyAddedCard: React.FC<any> = ({ data }) => {
+const TodaySpecialCard: React.FC<any> = ({ data }) => {
   const {
     id,
     price,
-    item_description: description,
     item_name: name,
-    item_qty: qty,
-    available_qty,
     category_info: category,
     image_name,
     image_url
@@ -41,4 +38,4 @@ const NewlyAddedCard: React.FC<any> = ({ data }) => {
   )
 }
 
-export default NewlyAddedCard
+export default TodaySpecialCard
