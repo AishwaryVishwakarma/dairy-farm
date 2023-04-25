@@ -2,11 +2,11 @@ import React from 'react'
 import styles from './styles.module.scss'
 import { Link } from 'react-router-dom'
 import { nanoid } from 'nanoid'
-import Card from './NACard/NACard'
 import { NewlyAddedProductData as NewlyAddedProductData } from '../../model'
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr'
+import NACard from './NACard/NACard'
 
-const DUMMY_DATA: NewlyAddedProductData[] = [
+const DUMMY_DATA = [
   {
     id: nanoid(),
     price:10,
@@ -108,7 +108,7 @@ const NewlyAdded: React.FC = () => {
         </div>
         <div ref={cardsSectionRef} className={styles.NACardsSection}>
           {DUMMY_DATA.map((data) => (
-            <Card key={data.id} data={data} />
+            <NACard key={data.id} data={data} />
           ))}
           <button
             type="button"
