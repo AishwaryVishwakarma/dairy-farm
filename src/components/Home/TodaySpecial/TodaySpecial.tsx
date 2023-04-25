@@ -38,20 +38,24 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
           ) : (
             <Loading loadingType="bars" height={80} width={80} />
           )}
-          <button
-            type="button"
-            className={styles.prevButton}
-            onClick={() => scroll(-1400)}
-          >
-            <AiOutlineLeft />
-          </button>
-          <button
-            type="button"
-            className={styles.nextButton}
-            onClick={() => scroll(1400)}
-          >
-            <AiOutlineRight />
-          </button>
+          {todaySpecial.length >= 6 && (
+            <button
+              type="button"
+              className={styles.prevButton}
+              onClick={() => scroll(-1400)}
+            >
+              <AiOutlineLeft />
+            </button>
+          )}
+          {todaySpecial.length >= 6 && (
+            <button
+              type="button"
+              className={styles.nextButton}
+              onClick={() => scroll(1400)}
+            >
+              <AiOutlineRight />
+            </button>
+          )}
         </div>
       </div>
     </div>
