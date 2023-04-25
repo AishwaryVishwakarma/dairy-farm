@@ -21,41 +21,41 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
     setTodaySpecial(TSData)
   }, [TSData])
 
-  console.log(TSData)
-
   return (
-    <div className={styles.NAWrapper}>
-      <div className={styles.NAMain}>
-        <p className={styles.heading}>Today's Special</p>
-        <div ref={cardsSectionRef} className={styles.NACardsSection}>
-          {todaySpecial ? (
-            todaySpecial.map(
-              (data) =>
-                data?.available_qty > 0 && (
-                  <TodaySpecialCard key={nanoid()} data={data} />
-                )
-            )
-          ) : (
-            <Loading loadingType="bars" height={80} width={80} />
-          )}
-          {todaySpecial.length >= 6 && (
-            <button
-              type="button"
-              className={styles.prevButton}
-              onClick={() => scroll(-1400)}
-            >
-              <AiOutlineLeft />
-            </button>
-          )}
-          {todaySpecial.length >= 6 && (
-            <button
-              type="button"
-              className={styles.nextButton}
-              onClick={() => scroll(1400)}
-            >
-              <AiOutlineRight />
-            </button>
-          )}
+    <div className={`${styles.NAWrapper} full-bleed layouted`}>
+      <div className={styles.NAContent}>
+        <div className={styles.NAMain}>
+          <p className={styles.heading}>Today's Special</p>
+          <div ref={cardsSectionRef} className={styles.NACardsSection}>
+            {todaySpecial ? (
+              todaySpecial.map(
+                (data) =>
+                  data?.available_qty > 0 && (
+                    <TodaySpecialCard key={nanoid()} data={data} />
+                  )
+              )
+            ) : (
+              <Loading loadingType="bars" height={80} width={80} />
+            )}
+            {todaySpecial?.length >= 6 && (
+              <button
+                type="button"
+                className={styles.prevButton}
+                onClick={() => scroll(-1400)}
+              >
+                <AiOutlineLeft />
+              </button>
+            )}
+            {todaySpecial?.length >= 6 && (
+              <button
+                type="button"
+                className={styles.nextButton}
+                onClick={() => scroll(1400)}
+              >
+                <AiOutlineRight />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
