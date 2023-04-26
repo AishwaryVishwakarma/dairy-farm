@@ -24,7 +24,10 @@ const RecommendedItems: React.FC<any> = ({RIData}) => {
     <div id="home-main" className={`${styles.RIWrapper} full-bleed layouted`}>
       <div className={styles.RIContent}>
         <div className={styles.RIMain}>
-          <p className={styles.heading}>Recommended Items</p>
+          <p className={styles.heading}>Recommended Items 🎯</p>
+          <p className={styles.description}>
+            Discover your new favorites with our hand-picked recommended items!
+          </p>
           <div ref={cardsSectionRef} className={styles.RICardsSection}>
             {recommended ? (
               recommended.map(

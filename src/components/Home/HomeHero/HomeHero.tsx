@@ -7,8 +7,6 @@ const HomeHero: React.FC = () => {
   function scrollToMain() {
     const my_element = document.getElementById("home-main")
 
-    console.log(my_element)
-
     my_element?.scrollIntoView({
       behavior: 'smooth',
       block: 'start',

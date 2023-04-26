@@ -4,6 +4,7 @@ import HomeHero from '../../components/Home/HomeHero/HomeHero'
 import axios from 'axios'
 import TodaysSpecial from '../../components/Home/TodaySpecial/TodaySpecial'
 import RecommendedItems from '../../components/Home/RecommendedItems/RecommendedItems'
+import TrendingItems from '../../components/Home/TrendingItems/TrendingItems'
 
 const HomePage: React.FC = () => {
   const [homeData, setHomeData] = React.useState<any>([])
@@ -22,6 +23,7 @@ const HomePage: React.FC = () => {
       <HomeHero />
       <TodaysSpecial TSData={homeData?.todayspecial} />
       <RecommendedItems RIData={homeData?.recommendeditems} />
+      <TrendingItems TIData={homeData?.trendingitems} />
     </Layout>
   )
 }
