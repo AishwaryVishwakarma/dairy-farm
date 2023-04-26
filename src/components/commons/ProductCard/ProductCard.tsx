@@ -1,13 +1,13 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { NewlyAddedProductData as NewlyAddedProductData } from '../../../../model'
+import { NewlyAddedProductData as NewlyAddedProductData } from '../../../model'
 import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
 
 // interface ProductData {
 //   data: NewlyAddedProductData
 // }
 
-const TodaySpecialCard: React.FC<any> = ({ data }) => {
+const ProductCard: React.FC<any> = ({ data }) => {
   const {
     id,
     price,
@@ -38,4 +38,4 @@ const TodaySpecialCard: React.FC<any> = ({ data }) => {
   )
 }
 
-export default TodaySpecialCard
+export default ProductCard

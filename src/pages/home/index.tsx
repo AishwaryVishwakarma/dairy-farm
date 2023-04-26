@@ -3,6 +3,7 @@ import Layout from '../../components/Layout/Layout'
 import HomeHero from '../../components/Home/HomeHero/HomeHero'
 import axios from 'axios'
 import TodaysSpecial from '../../components/Home/TodaySpecial/TodaySpecial'
+import RecommendedItems from '../../components/Home/RecommendedItems/RecommendedItems'
 
 const HomePage: React.FC = () => {
   const [homeData, setHomeData] = React.useState<any>([])
@@ -14,10 +15,13 @@ const HomePage: React.FC = () => {
       .catch((err) => console.log(err))
   }, [])
 
+  console.log(homeData)
+
   return (
     <Layout>
       <HomeHero />
       <TodaysSpecial TSData={homeData?.todayspecial} />
+      <RecommendedItems RIData={homeData?.recommendeditems} />
     </Layout>
   )
 }
