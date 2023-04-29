@@ -6,6 +6,7 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -15,11 +16,21 @@
   --secondary-red: #b90b33;
 }
 
-::-webkit-scrollbar {
-  display: none;
+.full-bleed {
+  width: 100%;
 }
 
-.page-content {
-  width: 80%;
-  margin: 0 auto;
+.layouted {
+  display: grid;
+  grid-template-columns: 1fr calc(min(77rem, 100%)) 1fr;
+}
+
+.layouted * {
+  grid-column: 2;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }

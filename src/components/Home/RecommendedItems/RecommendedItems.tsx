@@ -1,15 +1,14 @@
 import React from 'react'
-import styles from './styles.module.scss'
-import { Link } from 'react-router-dom'
+import Loading from '../../commons/Loading/Loading'
+import ProductCard from '../../commons/ProductCard/ProductCard'
 import { nanoid } from 'nanoid'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
-import ProductCard from '../../commons/ProductCard/ProductCard'
-import Loading from '../../commons/Loading/Loading'
+import styles from "./styles.module.scss"
 
-const TodaySpecial: React.FC<any> = ({ TSData }) => {
+const RecommendedItems: React.FC<any> = ({RIData}) => {
   const cardsSectionRef = React.useRef<HTMLDivElement | null>(null)
 
-  const [todaySpecial, setTodaySpecial] = React.useState<any[]>([])
+  const [recommended, setRecommended] = React.useState<any[]>([])
 
   const scroll = (scrollOffset: number) => {
     if (cardsSectionRef.current) {
@@ -18,20 +17,20 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
   }
 
   React.useEffect(() => {
-    setTodaySpecial(TSData)
-  }, [TSData])
+    setRecommended(RIData)
+  }, [RIData])
 
   return (
-    <div id="home-main" className={`${styles.TSWrapper} full-bleed layouted`}>
-      <div className={styles.TSContent}>
-        <div className={styles.TSMain}>
-          <p className={styles.heading}>Today's Special 📅</p>
+    <div id="home-main" className={`${styles.RIWrapper} full-bleed layouted`}>
+      <div className={styles.RIContent}>
+        <div className={styles.RIMain}>
+          <p className={styles.heading}>Recommended Items 🎯</p>
           <p className={styles.description}>
-            Today's special: a delicious deal you won't want to miss!
+            Discover your new favorites with our hand-picked recommended items!
           </p>
-          <div ref={cardsSectionRef} className={styles.TSCardsSection}>
-            {todaySpecial ? (
-              todaySpecial.map(
+          <div ref={cardsSectionRef} className={styles.RICardsSection}>
+            {recommended ? (
+              recommended.map(
                 (data) =>
                   data?.available_qty > 0 && (
                     <ProductCard key={nanoid()} data={data} />
@@ -40,7 +39,7 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
             ) : (
               <Loading loadingType="bars" height={80} width={80} />
             )}
-            {todaySpecial?.length >= 6 && (
+            {recommended?.length >= 6 && (
               <button
                 type="button"
                 className={styles.prevButton}
@@ -49,7 +48,7 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
                 <AiOutlineLeft />
               </button>
             )}
-            {todaySpecial?.length >= 6 && (
+            {recommended?.length >= 6 && (
               <button
                 type="button"
                 className={styles.nextButton}
@@ -65,4 +64,4 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
   )
 }
 
-export default TodaySpecial
+export default RecommendedItems

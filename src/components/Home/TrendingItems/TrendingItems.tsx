@@ -1,12 +1,11 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { Link } from 'react-router-dom'
-import { nanoid } from 'nanoid'
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import ProductCard from '../../commons/ProductCard/ProductCard'
+import { nanoid } from 'nanoid'
 import Loading from '../../commons/Loading/Loading'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
-const TodaySpecial: React.FC<any> = ({ TSData }) => {
+const TrendingItems: React.FC<any> = ({ TIData }) => {
   const cardsSectionRef = React.useRef<HTMLDivElement | null>(null)
 
   const [todaySpecial, setTodaySpecial] = React.useState<any[]>([])
@@ -18,16 +17,16 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
   }
 
   React.useEffect(() => {
-    setTodaySpecial(TSData)
-  }, [TSData])
+    setTodaySpecial(TIData)
+  }, [TIData])
 
   return (
     <div id="home-main" className={`${styles.TSWrapper} full-bleed layouted`}>
       <div className={styles.TSContent}>
         <div className={styles.TSMain}>
-          <p className={styles.heading}>Today's Special 📅</p>
+          <p className={styles.heading}>Trending Items 🔥</p>
           <p className={styles.description}>
-            Today's special: a delicious deal you won't want to miss!
+            Stay ahead of the curve with the hottest trending items!
           </p>
           <div ref={cardsSectionRef} className={styles.TSCardsSection}>
             {todaySpecial ? (
@@ -65,4 +64,4 @@ const TodaySpecial: React.FC<any> = ({ TSData }) => {
   )
 }
 
-export default TodaySpecial
+export default TrendingItems

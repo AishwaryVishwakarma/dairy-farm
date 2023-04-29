@@ -32,13 +32,6 @@ const Footer: React.FC = () => {
         >
           Aishwary Vishwakarma
         </a>{' '}
-        &{' '}
-        <a
-          href="https://www.linkedin.com/in/dipayan-chakraborty-866192208/"
-          target="_blank"
-        >
-          Dipayan Chakraborty
-        </a>{' '}
         @ 2023
       </div>
     </div>

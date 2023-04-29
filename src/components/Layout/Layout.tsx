@@ -8,7 +8,7 @@ interface EssentialProps {
 const Layout: React.FC<EssentialProps> = ({ children, footer=true }) => {
   return (
     <>
-      <div className="page-content">{children}</div>
+      {children}
       {footer && <Footer />}
     </>
   )
