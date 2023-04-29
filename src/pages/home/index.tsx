@@ -12,7 +12,7 @@ const HomePage: React.FC = () => {
 
   React.useEffect(() => {
     axios
-      .post('http://mywinkel.in/admin/api/home')
+      .post('https://mywinkel.in/admin/api/home')
       .then((res) => setHomeData(res.data))
       .catch((err) => console.log(err))
   }, [])
