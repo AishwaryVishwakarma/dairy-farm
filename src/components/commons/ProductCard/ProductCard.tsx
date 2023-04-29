@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { NewlyAddedProductData as NewlyAddedProductData } from '../../../model'
 import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
 
 // interface ProductData {
@@ -9,7 +8,6 @@ import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
 
 const ProductCard: React.FC<any> = ({ data }) => {
   const {
-    id,
     price,
     item_name: name,
     category_info: category,
