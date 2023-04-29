@@ -5,6 +5,7 @@ import axios from 'axios'
 import TodaysSpecial from '../../components/Home/TodaySpecial/TodaySpecial'
 import RecommendedItems from '../../components/Home/RecommendedItems/RecommendedItems'
 import TrendingItems from '../../components/Home/TrendingItems/TrendingItems'
+import Testimonials from '../../components/Home/Testimonials/Testimonials'
 
 const HomePage: React.FC = () => {
   const [homeData, setHomeData] = React.useState<any>([])
@@ -16,14 +17,13 @@ const HomePage: React.FC = () => {
       .catch((err) => console.log(err))
   }, [])
 
-  console.log(homeData)
-
   return (
     <Layout>
       <HomeHero />
       <TodaysSpecial TSData={homeData?.todayspecial} />
       <RecommendedItems RIData={homeData?.recommendeditems} />
       <TrendingItems TIData={homeData?.trendingitems} />
+      <Testimonials testimonialData={homeData?.testimonials} />
     </Layout>
   )
 }
