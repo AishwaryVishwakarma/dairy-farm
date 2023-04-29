@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { Link } from 'react-router-dom'
 import { nanoid } from 'nanoid'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import ProductCard from '../../commons/ProductCard/ProductCard'

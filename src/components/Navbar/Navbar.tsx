@@ -1,10 +1,8 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { UtilityContext } from '../../App'
 import { NavLink } from 'react-router-dom'
 
 const Navbar: React.FC = () => {
-  const { isMobile } = React.useContext(UtilityContext) ?? {}
 
   return (
     <div className="sticky full-bleed layouted">
