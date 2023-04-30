@@ -13,7 +13,7 @@ const TestimonialCard: React.FC<any> = ({ data }) => {
       <img src={image} alt={name} />
       <p className={styles.name}>{name}</p>
       <div className={styles.stars}>
-        {STARS.map((_star, idx) => (
+        {STARS.map((_star) => (
           <AiFillStar key={nanoid()} />
         ))}
       </div>

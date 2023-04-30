@@ -37,6 +37,8 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
     e.preventDefault()
   }
 
+  console.log(loginForm)
+
   const SignIn = (
     <>
       <div className={styles.title}>Login</div>
