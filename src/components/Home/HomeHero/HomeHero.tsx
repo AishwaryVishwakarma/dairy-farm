@@ -5,7 +5,7 @@ const HomeHero: React.FC = () => {
 
 
   function scrollToMain() {
-    const my_element = document.getElementById("home-main")
+    const my_element = document.getElementById("todays-special")
 
     my_element?.scrollIntoView({
       behavior: 'smooth',
