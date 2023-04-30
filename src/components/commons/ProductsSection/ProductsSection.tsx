@@ -40,7 +40,7 @@ const ProductsSection: React.FC<Props> = ({ type, data, sectionData }) => {
         <div ref={cardsSectionRef} className={styles.cardsSection}>
           {products ? (
             products.map((data) => {
-              const availableQty = Number(data?.available_qty)
+              const availableQty = Number(data.available_qty)
               return (
                 availableQty > 0 && <ProductCard key={nanoid()} data={data} />
               )

@@ -2,10 +2,9 @@ import React from 'react'
 import styles from './styles.module.scss'
 import { NavLink } from 'react-router-dom'
 
-const Navbar: React.FC = () => {
-
+const Navbar: React.FC<any> = ({ setIsModalOpen }) => {
   return (
-    <div className="sticky full-bleed layouted">
+    <div className="bgLight sticky full-bleed layouted">
       <nav className={styles.navbar}>
         <div className={styles.navHeading}>
           <NavLink to="/">React</NavLink>
@@ -47,16 +46,16 @@ const Navbar: React.FC = () => {
               Contact Us
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/signIn"
-              className={({ isActive }) => (isActive ? styles.active : '')}
-              end
-            >
-              Sign In
-            </NavLink>
-          </li>
         </ul>
+        <button
+          type="button"
+          className={styles.signInButton}
+          onClick={() => {
+            setIsModalOpen(true)
+          }}
+        >
+          Sign In
+        </button>
       </nav>
     </div>
   )
