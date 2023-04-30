@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { AiOutlineShoppingCart, AiOutlineHeart } from 'react-icons/ai'
+import { ProductData } from '../../../model'
 
-// interface ProductData {
-//   data: NewlyAddedProductData
-// }
+interface Data {
+  data: ProductData
+}
 
-const ProductCard: React.FC<any> = ({ data }) => {
+const ProductCard: React.FC<Data> = ({ data }) => {
   const {
     price,
     item_name: name,

@@ -2,10 +2,8 @@ import React from 'react'
 import Layout from '../../components/Layout/Layout'
 import HomeHero from '../../components/Home/HomeHero/HomeHero'
 import axios from 'axios'
-import TodaysSpecial from '../../components/Home/TodaySpecial/TodaySpecial'
-import RecommendedItems from '../../components/Home/RecommendedItems/RecommendedItems'
-import TrendingItems from '../../components/Home/TrendingItems/TrendingItems'
 import Testimonials from '../../components/Home/Testimonials/Testimonials'
+import ProductsSection from '../../components/commons/ProductsSection/ProductsSection'
 
 const HomePage: React.FC = () => {
   const [homeData, setHomeData] = React.useState<any>([])
@@ -20,9 +18,33 @@ const HomePage: React.FC = () => {
   return (
     <Layout>
       <HomeHero />
-      <TodaysSpecial TSData={homeData?.todayspecial} />
-      <RecommendedItems RIData={homeData?.recommendeditems} />
-      <TrendingItems TIData={homeData?.trendingitems} />
+      <ProductsSection
+        type="todays-special"
+        data={homeData?.todayspecial}
+        sectionData={{
+          heading: "Today's Special 📅",
+          description:
+            "Today's special: a delicious deal you won't want to miss!"
+        }}
+      />
+      <ProductsSection
+        type="recommended-items"
+        data={homeData?.recommendeditems}
+        sectionData={{
+          heading: 'Recommended Items 🎯',
+          description:
+            'Discover your new favorites with our hand-picked recommended items!'
+        }}
+      />
+      <ProductsSection
+        type="trending-items"
+        data={homeData?.trendingitems}
+        sectionData={{
+          heading: 'Trending Items 🔥',
+          description:
+            'Stay ahead of the curve with the hottest trending items!'
+        }}
+      />
       <Testimonials testimonialData={homeData?.testimonials} />
     </Layout>
   )
