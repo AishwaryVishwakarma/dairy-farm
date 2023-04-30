@@ -2,7 +2,7 @@
   color: #808693;
   background: #ffffff;
   backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur1(15px);
+  -webkit-backdrop-filter: blur(15px);
   display: flex;
   align-items: center;
   padding: 20px 0 15px;
@@ -42,5 +42,20 @@
   }
   .active {
     color: #232733;
+  }
+
+  .signInButton {
+    background: var(--primary-blue);
+    border: none;
+    outline: none;
+    color: #ffffff;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    margin-left: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
