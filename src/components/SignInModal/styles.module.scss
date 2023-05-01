@@ -63,6 +63,18 @@
     font-family: Nunito;
   }
 
+  .otpScreen {
+    padding: 40px 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+
+    .submit {
+      margin-top: 20px;
+    }
+  }
+
   .form {
     display: flex;
     flex-direction: column;
@@ -78,13 +90,13 @@
       overflow: hidden;
 
       & > input {
-      padding: 15px;
-
-        font-size: 18px;
+        padding: 10px 15px;
+        font-size: 16px;
         border: none;
         outline: none;
         height: 100%;
         width: 100%;
+        color: var(--almost-black);
       }
 
       & > select {
@@ -124,6 +136,14 @@
       }
     }
 
+    .error {
+      font-family: Nunito;
+      width: 100%;
+      text-align: left;
+      color: red;
+      font-size: 14px;
+    }
+
     & > p {
       align-self: flex-end;
       font-family: Nunito;
@@ -132,7 +152,8 @@
     }
   }
 
-  .login {
+  .submit {
+    height: 48px;
     background: var(--primary-blue);
     color: #ffffff;
     border: none;
@@ -142,6 +163,9 @@
     padding: 12px;
     font-size: 20px;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .signInOptions {
@@ -180,22 +204,32 @@
     }
   }
 
-  .signUpContainer {
+  .modalFooter {
     display: flex;
     flex-direction: column;
     gap: 5px;
     text-align: center;
     margin-top: 10px;
-    
+
+    .changeForm {
+      font-family: Nunito;
+      font-size: 18px;
+      font-weight: 700;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      width: max-content;
+      margin: 0 auto;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     & > p {
       font-family: Nunito;
       font-size: 18px;
       font-weight: 500;
-
-      &:last-child {
-        font-weight: 700;
-        cursor: pointer;
-      }
     }
   }
 }

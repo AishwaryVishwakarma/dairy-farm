@@ -8,12 +8,14 @@ const TestimonialCard: React.FC<any> = ({ data }) => {
 
   const STARS = new Array(Number(ratting))
 
+  STARS.fill(0)
+
   return (
     <div className={styles.testimonialCardWrapper}>
       <img src={image} alt={name} />
       <p className={styles.name}>{name}</p>
       <div className={styles.stars}>
-        {STARS.map((_star) => (
+        {STARS.map(() => (
           <AiFillStar key={nanoid()} />
         ))}
       </div>
