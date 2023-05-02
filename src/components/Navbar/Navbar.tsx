@@ -1,61 +1,99 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { NavLink } from 'react-router-dom'
+import { UtilityContext } from '../../App'
+import { nanoid } from 'nanoid'
+
+interface NavItems {
+  name: string
+  path: string
+}
+
+const NAV_ITEMS: NavItems[] = [
+  {
+    name: 'Home',
+    path: '/'
+  },
+  {
+    name: 'service',
+    path: '/service'
+  },
+  {
+    name: 'Products',
+    path: '/products'
+  },
+  {
+    name: 'Contact Us',
+    path: '/contact-us'
+  }
+]
 
 const Navbar: React.FC<any> = ({ setIsModalOpen }) => {
+  const { isMobile } = React.useContext(UtilityContext)
+
+  const [isHamMenuOpen, setIsHamMenuOpen] = React.useState<boolean>(false)
+
+  const [isHamClicked, setIsHamClicked] = React.useState<boolean>(false)
+
+  const listItems = (
+    <>
+      <ul className={styles.navItems}>
+        {NAV_ITEMS.map((item) => (
+          <li key={nanoid()}>
+            <NavLink
+              to={item.path}
+              className={({ isActive }) => (isActive ? styles.active : '')}
+              end
+              onClick={() => setIsHamMenuOpen(false)}
+            >
+              {item.name}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+      <button
+        type="button"
+        className={styles.signInButton}
+        onClick={() => {
+          setIsModalOpen(true)
+          setIsHamMenuOpen(false)
+        }}
+      >
+        Sign In
+      </button>
+    </>
+  )
+
   return (
     <div className="bgLight sticky full-bleed layouted">
       <nav className={styles.navbar}>
         <div className={styles.navHeading}>
           <NavLink to="/">React</NavLink>
         </div>
-        <ul className={styles.navItems}>
-          <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? styles.active : '')}
-              end
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/service"
-              className={({ isActive }) => (isActive ? styles.active : '')}
-              end
-            >
-              Service
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/products"
-              className={({ isActive }) => (isActive ? styles.active : '')}
-              end
-            >
-              Products
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact-us"
-              className={({ isActive }) => (isActive ? styles.active : '')}
-              end
-            >
-              Contact Us
-            </NavLink>
-          </li>
-        </ul>
-        <button
-          type="button"
-          className={styles.signInButton}
-          onClick={() => {
-            setIsModalOpen(true)
-          }}
-        >
-          Sign In
-        </button>
+        {isMobile ? (
+          <div
+            className={`${styles.hamButton} ${
+              isHamClicked
+                ? isHamMenuOpen
+                  ? styles.closeState
+                  : styles.openState
+                : ''
+            }`}
+            onClick={() => {
+              setIsHamMenuOpen((prevState) => !prevState)
+              setIsHamClicked(true)
+            }}
+          >
+            <div className={styles.hamLine}></div>
+            <div className={styles.hamLine}></div>
+            <div className={styles.hamLine}></div>
+          </div>
+        ) : (
+          listItems
+        )}
+        {isMobile && isHamMenuOpen && (
+          <div className={styles.hamMenu}>{listItems}</div>
+        )}
       </nav>
     </div>
   )

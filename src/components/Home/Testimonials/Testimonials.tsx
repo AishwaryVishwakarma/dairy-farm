@@ -4,8 +4,11 @@ import TestimonialCard from '../../commons/TestimonialCard/TestimonialCard'
 import { nanoid } from 'nanoid'
 import Loading from '../../commons/Loading/Loading'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import { UtilityContext } from '../../../App'
 
 const Testimonials: React.FC<any> = ({ testimonialData }) => {
+  const { isMobile } = React.useContext(UtilityContext)
+
   const cardsSectionRef = React.useRef<HTMLDivElement | null>(null)
 
   const [testimonials, setTestimonials] = React.useState<any[]>([])
@@ -30,9 +33,19 @@ const Testimonials: React.FC<any> = ({ testimonialData }) => {
               <TestimonialCard key={nanoid()} data={data} />
             ))
           ) : (
-            <Loading loadingType="bars" height={80} width={80} />
+            <div
+              style={{
+                margin: `${isMobile ? '0 auto' : '0'}`
+              }}
+            >
+              <Loading
+                loadingType="bars"
+                height={isMobile ? 50 : 80}
+                width={isMobile ? 50 : 80}
+              />
+            </div>
           )}
-          {testimonials?.length >= 4 && (
+          {testimonials?.length >= 4 && !isMobile && (
             <button
               type="button"
               className={styles.prevButton}
@@ -41,7 +54,7 @@ const Testimonials: React.FC<any> = ({ testimonialData }) => {
               <AiOutlineLeft />
             </button>
           )}
-          {testimonials?.length >= 4 && (
+          {testimonials?.length >= 4 && !isMobile && (
             <button
               type="button"
               className={styles.nextButton}

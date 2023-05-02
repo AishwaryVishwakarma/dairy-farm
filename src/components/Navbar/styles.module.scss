@@ -7,6 +7,104 @@
   align-items: center;
   padding: 20px 0 15px;
 
+  @media (max-width: '800px') {
+    padding: 20px 30px;
+  }
+
+  .hamButton {
+    margin-left: auto;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+
+    .hamLine {
+      height: 3px;
+      background: var(--almost-black);
+      width: 25px;
+      margin-bottom: 5px;
+      transform-origin: center;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .closeState {
+    .hamLine:first-child {
+      animation-name: rotate-clockwise;
+      animation-duration: 0.2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+
+      @keyframes rotate-clockwise {
+        100% {
+          transform: rotate(45deg) translateX(5.5px);
+        }
+      }
+    }
+
+    .hamLine:nth-child(2) {
+      display: none;
+    }
+
+    .hamLine:last-child {
+      animation-name: rotate-anti-clockwise;
+      animation-duration: 0.2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+
+      @keyframes rotate-anti-clockwise {
+        100% {
+          transform: rotate(-45deg) translateX(5.5px);
+        }
+      }
+    }
+  }
+
+  .openState {
+    .hamLine:first-child {
+      animation-name: rotate-back-anti-clockwise;
+      animation-duration: 0.2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+
+      @keyframes rotate-back-anti-clockwise {
+        0% {
+          transform: rotate(45deg) translateX(5px);
+        }
+      }
+    }
+
+    .hamLine:nth-child(2) {
+      display: block;
+    }
+
+    .hamLine:last-child {
+      animation-name: rotate-back-clockwise;
+      animation-duration: 0.2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+
+      @keyframes rotate-back-clockwise {
+        0% {
+          transform: rotate(-45deg) translateX(5px);
+        }
+      }
+    }
+  }
+
+  .hamMenu {
+    position: fixed;
+    background-color: #fff;
+    height: 100vh;
+    left: 0;
+    padding: 0 30px;
+    position: fixed;
+    top: 76px;
+    width: 100%;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -35,9 +133,18 @@
       text-align: center;
       font-weight: 500;
 
+      @media (max-width: '800px') {
+        padding: 10px 0;
+      }
+
       &:hover {
         color: #232733;
       }
+    }
+
+    @media (max-width: '800px') {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
   .active {
@@ -57,5 +164,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: '800px') {
+      width: 100%;
+      margin: 30px 0;
+    }
   }
 }

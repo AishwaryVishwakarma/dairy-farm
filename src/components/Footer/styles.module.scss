@@ -37,14 +37,28 @@
 
   .footerTabs {
     gap: 25px !important;
+
+    @media (max-width: "800px") {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   .footerCredits {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 6px;
     letter-spacing: 1px;
     word-spacing: 1px;
+
+    *{
+      flex-shrink: 0;
+    }
+
+    @media (max-width: "800px") {
+      justify-content: center;
+    }
 
     & > span {
       display: block;

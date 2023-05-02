@@ -5,6 +5,7 @@ import Loading from '../Loading/Loading'
 import ProductCard from '../ProductCard/ProductCard'
 import { nanoid } from 'nanoid'
 import { ProductData } from '../../../model'
+import { UtilityContext } from '../../../App'
 
 interface Props {
   type: string
@@ -16,6 +17,8 @@ interface Props {
 }
 
 const ProductsSection: React.FC<Props> = ({ type, data, sectionData }) => {
+  const { isMobile } = React.useContext(UtilityContext)
+
   const { heading, description } = sectionData ?? {}
 
   const cardsSectionRef = React.useRef<HTMLDivElement | null>(null)
@@ -46,9 +49,19 @@ const ProductsSection: React.FC<Props> = ({ type, data, sectionData }) => {
               )
             })
           ) : (
-            <Loading loadingType="bars" height={80} width={80} />
+            <div
+              style={{
+                margin: `${isMobile ? '0 auto' : '0'}`
+              }}
+            >
+              <Loading
+                loadingType="bars"
+                height={isMobile ? 50 : 80}
+                width={isMobile ? 50 : 80}
+              />
+            </div>
           )}
-          {products && products?.length >= 6 && (
+          {products && products?.length >= 6 && !isMobile && (
             <button
               type="button"
               className={styles.prevButton}
@@ -57,7 +70,7 @@ const ProductsSection: React.FC<Props> = ({ type, data, sectionData }) => {
               <AiOutlineLeft />
             </button>
           )}
-          {products && products?.length >= 6 && (
+          {products && products?.length >= 6 && !isMobile && (
             <button
               type="button"
               className={styles.nextButton}

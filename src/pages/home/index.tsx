@@ -9,12 +9,10 @@ const HomePage: React.FC = () => {
   const [homeData, setHomeData] = React.useState<any>([])
 
   React.useEffect(() => {
-    console.log('component mounted')
     axios
       .post('http://mywinkel.in/admin/api/home')
       .then((res) => {
         setHomeData(res.data)
-        console.log('data fetched')
       })
       .catch((err) => console.log(err))
   }, [])

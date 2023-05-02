@@ -5,6 +5,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import axios from 'axios'
 import Loading from '../commons/Loading/Loading'
 import COUNTRIES from './CountryCode/CountryCode'
+import { nanoid } from 'nanoid'
 
 const FORM_STATE = {
   SIGN_IN: 'sign-in',
@@ -12,6 +13,7 @@ const FORM_STATE = {
 }
 
 const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
+
   const [formState, setFormState] = React.useState(FORM_STATE.SIGN_IN)
 
   React.useEffect(() => {
@@ -215,8 +217,6 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
         })
     }
 
-    console.log(signupForm.country_code)
-
     return isSuccess ? (
       <div className={styles.otpScreen}>
         <p className={styles.description}>
@@ -230,7 +230,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
                 letterSpacing: '8px'
               }}
               type="text"
-              placeholder="Enter OTP here"
+              placeholder="OTP"
               autoComplete="on"
               name="otp"
               id="otp"
@@ -289,7 +289,8 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
             >
               {COUNTRIES.map((country, _idx) => (
                 <option
-                  data-countryCode={country.code}
+                key={nanoid()}
+                  data-country-code={country.code}
                   value={country.mobileCode}
                 >
                   {country.mobileCode} ({country.code})
