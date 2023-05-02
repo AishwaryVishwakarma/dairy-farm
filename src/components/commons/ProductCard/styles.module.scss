@@ -9,6 +9,10 @@
   position: relative;
   box-shadow: 2px 2px 8px 1px #cccccc;
 
+  @media (max-width: '800px') {
+    width: 180px;
+  }
+
   .wishlist {
     position: absolute;
     color: var(--primary-red);
@@ -22,6 +26,11 @@
     font-size: 24px;
     padding: 6px;
     cursor: pointer;
+
+    @media (max-width: "800px") {
+      font-size: 17.5px;
+      padding: 5px;
+    }
   }
 
   .category {
@@ -38,6 +47,10 @@
     width: 100%;
     height: 180px;
     object-fit: cover;
+
+    @media (max-width: '800px') {
+      height: 150px;
+    }
   }
 
   .detailsContainer {
@@ -59,6 +72,10 @@
       line-clamp: 1;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
+
+      @media (max-width: '800px') {
+        font-size: 17.5px;
+      }
     }
 
     .footerContainer {
@@ -72,6 +89,10 @@
         font-size: 18px;
         color: #14142b;
         font-weight: 700;
+
+        @media (max-width: '800px') {
+          font-size: 14px;
+        }
       }
 
       .cta {
@@ -87,6 +108,11 @@
 
         &:hover {
           transform: scale(1.05);
+        }
+
+        @media (max-width: "800px") {
+          font-size: 14px;
+          padding: 5px 10px;
         }
       }
     }

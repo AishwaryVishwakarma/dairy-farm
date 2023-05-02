@@ -5,6 +5,7 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import axios from 'axios'
 import Loading from '../commons/Loading/Loading'
 import COUNTRIES from './CountryCode/CountryCode'
+import { UtilityContext } from '../../App'
 
 const FORM_STATE = {
   SIGN_IN: 'sign-in',
@@ -12,6 +13,8 @@ const FORM_STATE = {
 }
 
 const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
+  const { isMobile } = React.useContext(UtilityContext)
+
   const [formState, setFormState] = React.useState(FORM_STATE.SIGN_IN)
 
   React.useEffect(() => {
@@ -43,7 +46,6 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
 
     const loginFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      console.log(loginForm)
     }
 
     const handleSigninInputChange = (
@@ -215,8 +217,6 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
         })
     }
 
-    console.log(signupForm.country_code)
-
     return isSuccess ? (
       <div className={styles.otpScreen}>
         <p className={styles.description}>
@@ -230,7 +230,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
                 letterSpacing: '8px'
               }}
               type="text"
-              placeholder="Enter OTP here"
+              placeholder="OTP"
               autoComplete="on"
               name="otp"
               id="otp"

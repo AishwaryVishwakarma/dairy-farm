@@ -11,6 +11,10 @@
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.3);
   z-index: 11;
+
+  @media (max-width: "800px") {
+    display: none;
+  }
 }
 
 .modalContent {
@@ -34,6 +38,14 @@
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+
+  @media (max-width: "800px") {
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    min-width: 100%;
+    max-width: 100%;
+  }
 
   @keyframes slide-up {
     0% {
