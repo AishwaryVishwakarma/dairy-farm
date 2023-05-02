@@ -5,7 +5,6 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
 import axios from 'axios'
 import Loading from '../commons/Loading/Loading'
 import COUNTRIES from './CountryCode/CountryCode'
-import { UtilityContext } from '../../App'
 import { nanoid } from 'nanoid'
 
 const FORM_STATE = {
@@ -14,7 +13,6 @@ const FORM_STATE = {
 }
 
 const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
-  const { isMobile } = React.useContext(UtilityContext)
 
   const [formState, setFormState] = React.useState(FORM_STATE.SIGN_IN)
 
@@ -47,6 +45,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
 
     const loginFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
+      console.log(loginForm)
     }
 
     const handleSigninInputChange = (
