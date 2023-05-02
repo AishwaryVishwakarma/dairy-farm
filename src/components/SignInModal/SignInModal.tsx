@@ -6,6 +6,7 @@ import axios from 'axios'
 import Loading from '../commons/Loading/Loading'
 import COUNTRIES from './CountryCode/CountryCode'
 import { UtilityContext } from '../../App'
+import { nanoid } from 'nanoid'
 
 const FORM_STATE = {
   SIGN_IN: 'sign-in',
@@ -289,7 +290,8 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
             >
               {COUNTRIES.map((country, _idx) => (
                 <option
-                  data-countryCode={country.code}
+                key={nanoid()}
+                  data-country-code={country.code}
                   value={country.mobileCode}
                 >
                   {country.mobileCode} ({country.code})
