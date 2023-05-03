@@ -16,7 +16,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
   const [formState, setFormState] = React.useState(FORM_STATE.SIGN_IN)
 
   React.useEffect(() => {
-    const keyDownHandler = (event: any) => {
+    const keyDownHandler = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault()
         setIsModalOpen(false)
@@ -144,7 +144,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
 
     const [signupError, setSignupError] = React.useState<string>('')
 
-    const [isLoading, setIsLoading] = React.useState<boolean>(false)
+    const [isSignupLoading, setIsSignupLoading] = React.useState<boolean>(false)
 
     const [isSignupSuccess, setIsSignupSuccess] = React.useState<boolean>(false)
 
@@ -173,7 +173,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
 
     const signUpFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      setIsLoading(true)
+      setIsSignupLoading(true)
       setSignupError('')
       const {
         signup_name: name,
@@ -208,11 +208,11 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
           } else {
             setIsSignupSuccess(true)
           }
-          setIsLoading(false)
+          setIsSignupLoading(false)
         })
         .catch((err) => {
           setSignupError(err.message)
-          setIsLoading(false)
+          setIsSignupLoading(false)
         })
     }
 
@@ -346,7 +346,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
             {signupError.length > 0 && signupError}
           </p>
           <button type="submit" className={styles.submit}>
-            {isLoading ? (
+            {isSignupLoading ? (
               <Loading
                 color="#ffffff"
                 height={25}
