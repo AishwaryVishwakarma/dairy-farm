@@ -175,8 +175,8 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
 
     const signUpFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-      setIsSignupLoading(true)
       setSignupError('')
+
       const {
         signup_name: name,
         signup_email: email,
@@ -188,9 +188,10 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
 
       if (!PASSWORD_REGEX.test(signup_number)) {
         setSignupError('Please enter correct phone number')
-        setIsSignupLoading(false)
         return
       }
+
+      setIsSignupLoading(true)
 
       const date = new Date()
 
