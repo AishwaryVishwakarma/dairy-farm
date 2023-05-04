@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './styles.module.scss'
 import { createPortal } from 'react-dom'
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import { AiFillEye, AiFillEyeInvisible, AiOutlineClose } from 'react-icons/ai'
 import axios from 'axios'
 import Loading from '../commons/Loading/Loading'
 import COUNTRIES from './CountryCode/CountryCode'
@@ -11,6 +11,8 @@ const FORM_STATE = {
   SIGN_IN: 'sign-in',
   SIGN_UP: 'sign-up'
 }
+
+const PASSWORD_REGEX = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 
 const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
   const [formState, setFormState] = React.useState(FORM_STATE.SIGN_IN)
@@ -183,6 +185,12 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
         signup_password: password,
         signup_referral: referral_code
       } = signupForm ?? {}
+
+      if (!PASSWORD_REGEX.test(signup_number)) {
+        setSignupError('Please enter correct phone number')
+        setIsSignupLoading(false)
+        return
+      }
 
       const date = new Date()
 
@@ -388,7 +396,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
             setIsModalOpen(false)
           }}
         >
-          X
+          <AiOutlineClose />
         </div>
         {formState === FORM_STATE.SIGN_IN ? <SignIn /> : <SignUp />}
       </div>
