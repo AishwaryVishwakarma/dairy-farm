@@ -100,9 +100,10 @@
     height: 100vh;
     left: 0;
     padding: 0 30px;
-    position: fixed;
     top: 76px;
     width: 100%;
+    overflow: scroll;
+    overscroll-behavior: contain;
   }
 
   a {
@@ -131,14 +132,14 @@
       font-size: 18px;
       padding: 10px;
       text-align: center;
-      font-weight: 500;
+      font-weight: 600;
 
       @media (max-width: '800px') {
         padding: 10px 0;
       }
 
       &:hover {
-        color: #232733;
+        color: var(--primary-blue);
       }
     }
 
@@ -147,8 +148,10 @@
       align-items: flex-start;
     }
   }
+
   .active {
-    color: #232733;
+    color: var(--primary-blue);
+    font-weight: 700;
   }
 
   .signInButton {

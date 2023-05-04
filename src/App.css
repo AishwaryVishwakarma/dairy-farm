@@ -24,10 +24,10 @@
 .layouted {
   display: grid;
   grid-template-columns: 1fr calc(min(77rem, 100%)) 1fr;
-}
 
-.layouted * {
-  grid-column: 2;
+  & * {
+    grid-column: 2;
+  }
 }
 
 .bgLight {
