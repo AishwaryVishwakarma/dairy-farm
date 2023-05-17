@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { createPortal } from 'react-dom'
-import { AiFillEye, AiFillEyeInvisible, AiOutlineClose } from 'react-icons/ai'
+import {createPortal} from 'react-dom'
+import {AiFillEye, AiFillEyeInvisible, AiOutlineClose} from 'react-icons/ai'
 import axios from 'axios'
 import Loading from '../commons/Loading/Loading'
 import COUNTRIES from './CountryCode/CountryCode'
-import { nanoid } from 'nanoid'
+import {nanoid} from 'nanoid'
 
 const FORM_STATE = {
   SIGN_IN: 'sign-in',
@@ -14,7 +14,7 @@ const FORM_STATE = {
 
 const PASSWORD_REGEX = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 
-const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
+const SignInModal: React.FC<any> = ({setIsModalOpen}) => {
   const [formState, setFormState] = React.useState(FORM_STATE.SIGN_IN)
 
   React.useEffect(() => {
@@ -40,18 +40,18 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
       login_password: ''
     })
 
-    const togglePasswordVisibility = () => {
-      setPasswordVisible((prevState) => !prevState)
+    const togglePasswordVisibility = (): void => {
+      setPasswordVisible((prevState): boolean => !prevState)
     }
 
-    const loginFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const loginFormSubmit = (e: React.FormEvent<HTMLFormElement>) : void => {
       e.preventDefault()
       console.log(loginForm)
     }
 
     const handleSigninInputChange = (
       event: React.ChangeEvent<HTMLInputElement>
-    ) => {
+    ): void => {
       const name = event.target.name
       const value = event.target.value
       setLoginForm((prevState) => {
@@ -173,7 +173,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
       })
     }
 
-    const signUpFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const signUpFormSubmit = (e: React.FormEvent<HTMLFormElement>) : void => {
       e.preventDefault()
       setSignupError('')
 
@@ -225,13 +225,18 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
         })
     }
 
+    const otpSubmissionHandler = (e: React.FormEvent<HTMLFormElement>): void => {
+      e.preventDefault();
+      console.log(otp)
+    }
+
     return isSignupSuccess ? (
       <div className={styles.otpScreen}>
         <p className={styles.description}>
           An email with an OTP has been sent to <b>{signupForm.signup_email}</b>
         </p>
         <p className={styles.description}>Kindly verify</p>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={otpSubmissionHandler}>
           <div className={styles.inputContainer}>
             <input
               style={{
