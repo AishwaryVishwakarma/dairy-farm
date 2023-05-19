@@ -60,8 +60,10 @@
   .close {
     position: absolute;
     right: 40px;
+    top: 25px;
     cursor: pointer;
     color: #8e8e8e;
+    font-size: 20px;
   }
 
   .title {
@@ -118,6 +120,7 @@
         font-family: Nunito;
         cursor: pointer;
         font-size: 16px;
+        background: transparent;
       }
 
       .eyeContainer {
@@ -148,7 +151,7 @@
       }
     }
 
-    .error {
+    .signupError {
       font-family: Nunito;
       width: 100%;
       text-align: left;

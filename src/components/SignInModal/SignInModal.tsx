@@ -1,23 +1,24 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { createPortal } from 'react-dom'
-import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai'
+import {createPortal} from 'react-dom'
+import {AiFillEye, AiFillEyeInvisible, AiOutlineClose} from 'react-icons/ai'
 import axios from 'axios'
 import Loading from '../commons/Loading/Loading'
 import COUNTRIES from './CountryCode/CountryCode'
-import { nanoid } from 'nanoid'
+import {nanoid} from 'nanoid'
 
 const FORM_STATE = {
   SIGN_IN: 'sign-in',
   SIGN_UP: 'sign-up'
 }
 
-const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
+const PASSWORD_REGEX = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/
 
+const SignInModal: React.FC<any> = ({setIsModalOpen}) => {
   const [formState, setFormState] = React.useState(FORM_STATE.SIGN_IN)
 
   React.useEffect(() => {
-    const keyDownHandler = (event: any) => {
+    const keyDownHandler = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault()
         setIsModalOpen(false)
@@ -39,18 +40,18 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
       login_password: ''
     })
 
-    const togglePasswordVisibility = () => {
-      setPasswordVisible((prevState) => !prevState)
+    const togglePasswordVisibility = (): void => {
+      setPasswordVisible((prevState): boolean => !prevState)
     }
 
-    const loginFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const loginFormSubmit = (e: React.FormEvent<HTMLFormElement>) : void => {
       e.preventDefault()
       console.log(loginForm)
     }
 
     const handleSigninInputChange = (
       event: React.ChangeEvent<HTMLInputElement>
-    ) => {
+    ): void => {
       const name = event.target.name
       const value = event.target.value
       setLoginForm((prevState) => {
@@ -143,11 +144,11 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
 
     const [otp, setOtp] = React.useState<string>('')
 
-    const [error, setError] = React.useState<string>('')
+    const [signupError, setSignupError] = React.useState<string>('')
 
-    const [isLoading, setIsLoading] = React.useState<boolean>(false)
+    const [isSignupLoading, setIsSignupLoading] = React.useState<boolean>(false)
 
-    const [isSuccess, setIsSuccess] = React.useState<boolean>(false)
+    const [isSignupSuccess, setIsSignupSuccess] = React.useState<boolean>(false)
 
     const handleSignupInputChange = (
       event:
@@ -172,10 +173,10 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
       })
     }
 
-    const signUpFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const signUpFormSubmit = (e: React.FormEvent<HTMLFormElement>) : void => {
       e.preventDefault()
-      setIsLoading(true)
-      setError('')
+      setSignupError('')
+
       const {
         signup_name: name,
         signup_email: email,
@@ -185,6 +186,13 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
         signup_referral: referral_code
       } = signupForm ?? {}
 
+      if (!PASSWORD_REGEX.test(signup_number)) {
+        setSignupError('Please enter correct phone number')
+        return
+      }
+
+      setIsSignupLoading(true)
+
       const date = new Date()
 
       const base64 = btoa(email + date.toString())
@@ -192,7 +200,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
       axios
         .post('http://mywinkel.in/admin/api/register', {
           name,
-          email: email.toLowerCase(),
+          email: email.toLowerCase().trim(),
           password: password.trim(),
           mobile: country_code + signup_number,
           referral_code,
@@ -205,25 +213,30 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
         .then((res) => {
           const response = res.data
           if (response.status === 0) {
-            setError(response.message)
+            setSignupError(response.message)
           } else {
-            setIsSuccess(true)
+            setIsSignupSuccess(true)
           }
-          setIsLoading(false)
+          setIsSignupLoading(false)
         })
         .catch((err) => {
-          setError(err.message)
-          setIsLoading(false)
+          setSignupError(err.message)
+          setIsSignupLoading(false)
         })
     }
 
-    return isSuccess ? (
+    const otpSubmissionHandler = (e: React.FormEvent<HTMLFormElement>): void => {
+      e.preventDefault();
+      console.log(otp)
+    }
+
+    return isSignupSuccess ? (
       <div className={styles.otpScreen}>
         <p className={styles.description}>
           An email with an OTP has been sent to <b>{signupForm.signup_email}</b>
         </p>
         <p className={styles.description}>Kindly verify</p>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={otpSubmissionHandler}>
           <div className={styles.inputContainer}>
             <input
               style={{
@@ -231,7 +244,6 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
               }}
               type="text"
               placeholder="OTP"
-              autoComplete="on"
               name="otp"
               id="otp"
               required
@@ -244,7 +256,10 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
           </button>
         </form>
         <div className={styles.modalFooter}>
-          <p className={styles.changeForm} onClick={() => setIsSuccess(false)}>
+          <p
+            className={styles.changeForm}
+            onClick={() => setIsSignupSuccess(false)}
+          >
             Go Back
           </p>
         </div>
@@ -289,9 +304,10 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
             >
               {COUNTRIES.map((country, _idx) => (
                 <option
-                key={nanoid()}
+                  key={nanoid()}
                   data-country-code={country.code}
                   value={country.mobileCode}
+                  id={country.mobileCode}
                 >
                   {country.mobileCode} ({country.code})
                 </option>
@@ -340,9 +356,11 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
             />
             <label htmlFor="signup_terms">I accept terms & conditions</label>
           </div>
-          <p className={styles.error}>{error.length > 0 && error}</p>
+          <p className={styles.signupError}>
+            {signupError.length > 0 && signupError}
+          </p>
           <button type="submit" className={styles.submit}>
-            {isLoading ? (
+            {isSignupLoading ? (
               <Loading
                 color="#ffffff"
                 height={25}
@@ -384,7 +402,7 @@ const SignInModal: React.FC<any> = ({ setIsModalOpen }) => {
             setIsModalOpen(false)
           }}
         >
-          X
+          <AiOutlineClose />
         </div>
         {formState === FORM_STATE.SIGN_IN ? <SignIn /> : <SignUp />}
       </div>

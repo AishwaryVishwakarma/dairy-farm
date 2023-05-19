@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
+import {AiOutlineLeft, AiOutlineRight} from 'react-icons/ai'
 import Loading from '../Loading/Loading'
 import ProductCard from '../ProductCard/ProductCard'
-import { nanoid } from 'nanoid'
-import { ProductData } from '../../../model'
-import { UtilityContext } from '../../../App'
+import {nanoid} from 'nanoid'
+import {ProductData} from '../../../model'
+import {UtilityContext} from '../../../App'
 
 interface Props {
   type: string
@@ -16,10 +16,10 @@ interface Props {
   }
 }
 
-const ProductsSection: React.FC<Props> = ({ type, data, sectionData }) => {
-  const { isMobile } = React.useContext(UtilityContext)
+const ProductsSection: React.FC<Props> = ({type, data, sectionData}) => {
+  const {isMobile} = React.useContext(UtilityContext)
 
-  const { heading, description } = sectionData ?? {}
+  const {heading, description} = sectionData ?? {}
 
   const cardsSectionRef = React.useRef<HTMLDivElement | null>(null)
 
@@ -40,7 +40,9 @@ const ProductsSection: React.FC<Props> = ({ type, data, sectionData }) => {
       <div className={styles.sectionMain}>
         <p className={styles.heading}>{heading}</p>
         <p className={styles.description}>{description}</p>
-        <div ref={cardsSectionRef} className={styles.cardsSection}>
+        <div ref={cardsSectionRef} className={styles.cardsSection} style={{
+          justifyContent: `${products && products?.length > 6 || isMobile ? "flex-start" : "center"}`
+        }}>
           {products ? (
             products.map((data) => {
               const availableQty = Number(data.available_qty)
@@ -61,20 +63,20 @@ const ProductsSection: React.FC<Props> = ({ type, data, sectionData }) => {
               />
             </div>
           )}
-          {products && products?.length >= 6 && !isMobile && (
+          {products && products?.length > 6 && !isMobile && (
             <button
               type="button"
               className={styles.prevButton}
-              onClick={() => scroll(-1400)}
+              onClick={() => scroll(-200 * 5)}
             >
               <AiOutlineLeft />
             </button>
           )}
-          {products && products?.length >= 6 && !isMobile && (
+          {products && products?.length > 6 && !isMobile && (
             <button
               type="button"
               className={styles.nextButton}
-              onClick={() => scroll(1400)}
+              onClick={() => scroll(200 * 5)}
             >
               <AiOutlineRight />
             </button>

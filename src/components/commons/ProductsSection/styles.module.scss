@@ -61,24 +61,23 @@
     scroll-behavior: smooth;
 
     @media (max-width: '800px') {
-      justify-content: flex-start;
       padding: 0;
       height: 300px;
     }
 
     &::-webkit-scrollbar {
-      display: block;
-      height: 7px;
+      display: none;
+      // height: 7px;
     }
 
-    &::-webkit-scrollbar-thumb {
-      background-color: #c4c4c4;
-      border-radius: 49px;
+    // &::-webkit-scrollbar-thumb {
+    //   background-color: #c4c4c4;
+    //   border-radius: 49px;
 
-      &:hover {
-        background-color: #aaaaaa;
-      }
-    }
+    //   &:hover {
+    //     background-color: #aaaaaa;
+    //   }
+    // }
   }
 
   button {

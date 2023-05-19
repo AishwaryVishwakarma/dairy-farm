@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from './styles.module.scss'
-import { NavLink } from 'react-router-dom'
-import { UtilityContext } from '../../App'
-import { nanoid } from 'nanoid'
+import {NavLink} from 'react-router-dom'
+import {UtilityContext} from '../../App'
+import {nanoid} from 'nanoid'
 
 interface NavItems {
   name: string
@@ -15,8 +15,12 @@ const NAV_ITEMS: NavItems[] = [
     path: '/'
   },
   {
-    name: 'service',
+    name: 'Service',
     path: '/service'
+  },
+  {
+    name: 'Categories',
+    path: '/categories'
   },
   {
     name: 'Products',
@@ -28,8 +32,8 @@ const NAV_ITEMS: NavItems[] = [
   }
 ]
 
-const Navbar: React.FC<any> = ({ setIsModalOpen }) => {
-  const { isMobile } = React.useContext(UtilityContext)
+const Navbar: React.FC<any> = ({setIsModalOpen}) => {
+  const {isMobile} = React.useContext(UtilityContext)
 
   const [isHamMenuOpen, setIsHamMenuOpen] = React.useState<boolean>(false)
 
@@ -42,7 +46,7 @@ const Navbar: React.FC<any> = ({ setIsModalOpen }) => {
           <li key={nanoid()}>
             <NavLink
               to={item.path}
-              className={({ isActive }) => (isActive ? styles.active : '')}
+              className={({isActive}) => (isActive ? styles.active : '')}
               end
               onClick={() => setIsHamMenuOpen(false)}
             >
@@ -72,13 +76,12 @@ const Navbar: React.FC<any> = ({ setIsModalOpen }) => {
         </div>
         {isMobile ? (
           <div
-            className={`${styles.hamButton} ${
-              isHamClicked
-                ? isHamMenuOpen
-                  ? styles.closeState
-                  : styles.openState
-                : ''
-            }`}
+            className={`${styles.hamButton} ${isHamClicked
+              ? isHamMenuOpen
+                ? styles.closeState
+                : styles.openState
+              : ''
+              }`}
             onClick={() => {
               setIsHamMenuOpen((prevState) => !prevState)
               setIsHamClicked(true)

@@ -5,8 +5,10 @@ import Layout from '../../components/Layout/Layout'
 const ProductPage: React.FC = () => {
   return (
     <Layout>
-      <div className={styles.Wrapper}>
-        <p className={styles.productTitle}>This is a Product</p>
+      <div className='full-bleed layouted'>
+        <div className={styles.productWrapper}>
+          <p className={styles.productTitle}>This is a Product</p>
+        </div>
       </div>
     </Layout>
   )
